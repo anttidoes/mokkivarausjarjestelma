@@ -1,3 +1,4 @@
+/*
 package src.dao;
 
 import model.Mokki;
@@ -54,3 +55,4 @@ public class MokkiDAO {
 
     // Lisää halutessa päivitäMokki(...) metodi
 }
+*/

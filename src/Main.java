@@ -1,3 +1,4 @@
+/*
 package src;
 
 import src.dao.MokkiDAO;
@@ -31,3 +32,4 @@ public class Main {
         }
     }
 }
+*/
