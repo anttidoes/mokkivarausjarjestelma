@@ -1,3 +1,4 @@
+/*
 package moekkikodit.db;
 
 import java.sql.*;
@@ -49,3 +50,4 @@ public class MokkiTietokantaYhteys {
         }
     }
 }
+*/
