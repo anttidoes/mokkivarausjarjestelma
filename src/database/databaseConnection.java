@@ -1,20 +1,17 @@
-/*
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-*/
+package src.database;
 
-import java.sql.*;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Properties;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
 
 
-public class database {
+/**
+ * tämä luokka hoitaa tietokantaan yhdistämisen ja siihen liittyvän virhekäsittelyn
+ */
+public class databaseConnection {
 
     public static void main(String[] args) {
         // tämä on kaikilla sama, kun käytetään setup_test.sql
@@ -51,7 +48,7 @@ public class database {
         // yhteyden luominen mysql serveriin
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
             if (connection != null) {
-                System.out.println("Connected to the database!" + "\n");
+                System.out.println("Connected to the src.database.database!" + "\n");
                 Statement statement = connection.createStatement();
 
                 suoritaTestikyselyt(statement);
