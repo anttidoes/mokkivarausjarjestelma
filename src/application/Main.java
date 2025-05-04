@@ -1,5 +1,7 @@
 package src.application;
 
+import src.database.Database;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -8,6 +10,10 @@ import javafx.scene.Parent;
 
 import java.io.IOException;
 
+/**
+ * Tämä luokka käynnistää sovelluksen.
+ * Alustaa JavaFX-ympäristön, lataa ensimmäisen näkymän ja konfiguroi tietokantayhteydet.
+ */
 public class Main extends Application {
 
     private static Stage primaryStage;
@@ -27,9 +33,16 @@ public class Main extends Application {
         primaryStage.setScene(scene);
     }
 
+
+
     public static void main(String[] args) {
         launch(args);
+
+        // konfiguroi tietokantayhteydet
+
     }
+
+
 }
 
 

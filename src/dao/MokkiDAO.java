@@ -1,3 +1,38 @@
+package src.dao;
+
+import src.model.*;
+import src.database.Database;
+
+import java.sql.*;
+import java.util.*;
+
+
+public class MokkiDAO {
+    public Mokki haeMokki(int mokkiId) {
+        String sql = "SELECT * FROM Mökki JOIN Postialue USING(postinumero) WHERE mokki_id = ?";
+        try (Connection conn = Database.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, mokkiId);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                Postialue pa = new Postialue(rs.getString("postinumero"), rs.getString("kunta"), rs.getString("maa"));
+                return new Mokki(
+                        rs.getInt("mokki_id"),
+                        rs.getString("nimi"),
+                        rs.getString("katuosoite"),
+                        rs.getBigDecimal("hinta"),
+                        rs.getString("kuvaus"),
+                        pa
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+}
+
+
 /*
 package src.dao;
 

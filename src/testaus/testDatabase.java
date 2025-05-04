@@ -1,65 +1,11 @@
-package src.database;
+package src.testaus;
 
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.sql.*;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
-
-/**
- * tämä luokka hoitaa tietokantaan yhdistämisen ja siihen liittyvän virhekäsittelyn
- */
-public class databaseConnection {
-
-    public static void main(String[] args) {
-        // tämä on kaikilla sama, kun käytetään setup_test.sql
-        String url = "jdbc:mysql://localhost:3306/lomakyla";
-        /*
-        // TODO: saada tämä toimimaan mielummin
-        // nämä haetaan ympäristömuuttujina
-        String user = System.getenv("OTI_USER");
-        String password = System.getenv("OTI_PASS");
-
-        if (user != null && password != null) {
-            System.out.println("Environment variables: OK");
-        }
-        else {
-            System.out.println("Environment variables: null");
-            System.exit(1);
-        }
-        */
-
-        // vaihtoehtoinen ratkaisu
-        String user = null;
-        String password = null;
-        Properties properties = new Properties();
-        try (FileInputStream fis = new FileInputStream("src/db_credentials.properties")) {
-            properties.load(fis);
-            user = properties.getProperty("db.username");
-            password = properties.getProperty("db.password");
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.exit(1);
-        }
-
-
-        // yhteyden luominen mysql serveriin
-        try (Connection connection = DriverManager.getConnection(url, user, password)) {
-            if (connection != null) {
-                System.out.println("Connected to the src.database.database!" + "\n");
-                Statement statement = connection.createStatement();
-
-                suoritaTestikyselyt(statement);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.exit(1);
-        }
-
-    }
-
+public class testDatabase {
 
     /**
      * Debuggaus tarkoituksiin.
@@ -103,14 +49,6 @@ public class databaseConnection {
     }
 
 
-    /**
-     * Tässä komponentissa tapahtuu kaikki ohjelmiston ja tietokannan välinen vuorovaikutus.
-     * Käsittelee eri virhetilanteet.
-     * @param statement
-     * @param query
-     * @param method
-     * @throws SQLException
-     */
     private static void testaaKyselyt(Statement statement, String query, String method) throws SQLException {
         switch (method) {
             case "SELECT" -> {
@@ -184,6 +122,4 @@ public class databaseConnection {
 
         System.out.println();
     }
-
-
 }
