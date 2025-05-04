@@ -3,7 +3,6 @@ package src.application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
-import javax.swing.tree.DefaultTreeModel;
 import java.io.IOException;
 
 public class MainMenuController {
@@ -13,10 +12,8 @@ public class MainMenuController {
         App.setRoot("CottageView");
     }
 
-    // Add similar methods for other buttons:
     @FXML
     private void handleBilling(ActionEvent event) throws IOException {
-        DefaultTreeModel App;
         App.setRoot("BillingView");
     }
 
@@ -39,5 +36,4 @@ public class MainMenuController {
     private void handleRegions(ActionEvent event) throws IOException {
         App.setRoot("RegionView");
     }
-
 }
