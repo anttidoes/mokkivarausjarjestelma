@@ -7,6 +7,7 @@ public class Varaus {
     private int varausId, asiakasId, mokkiId;
     private Date alku, loppu, varausPvm;
 
+    // JDBC vaatii java.sql.Date
     public Varaus(int varausId, int asiakasId, int mokkiId, Date alku, Date loppu, Date varausPvm) {
         this.varausId = varausId;
         this.asiakasId = asiakasId;
